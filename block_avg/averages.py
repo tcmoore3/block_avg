@@ -1,11 +1,13 @@
+"""Main functions for block_avg"""
+
 import numpy as np
 
 
 def block_avg(data, block_size):
     """Break a 2d numpy array into blocks
 
-    Args
-    ----
+    Parameters
+    ----------
     data : np.ndarray, shape=(m, n)
         The data to block; must be a 2-dimensional array
     block_size : int
@@ -18,9 +20,13 @@ def block_avg(data, block_size):
     stds : np.ndarray, shape=(m/block_size, n)
         The standard deviation of each block
 
-    Note that m must not necessarily be divisible by block_size; in the case
-    that it isn't, the data is trimmed from the beginning so that it is.
+    Notes
+    -----
+    `m` must not necessarily be divisible by `block_size` ; in the case
+    that it isn't, the data is trimmed *from the beginning* so that it is.
+
     """
+
     remainder = data.shape[0] % block_size
     if remainder != 0:
         data = data[remainder:]
